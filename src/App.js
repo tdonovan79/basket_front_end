@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import LoginForm from './LoginForm.js'
+import Payment from './Payment.js'
 
 
 function App() {
@@ -8,8 +9,10 @@ function App() {
 
 
   return (
-    <LoginForm/>
-    
+    <div>
+      <LoginForm />
+      <Payment />
+    </div>
   );
 }
 
