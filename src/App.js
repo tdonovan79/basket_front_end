@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import LoginForm from './LoginForm.js'
-import Payment from './Payment.js'
+import NavBar from './Components/NavBar.js'
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Pages/Routes.js'
 
 
 function App() {
@@ -10,8 +11,12 @@ function App() {
 
   return (
     <div>
-      <LoginForm />
-      <Payment />
+      {/* <LoginForm />
+      <Payment /> */}
+      <Router>
+        <NavBar />
+        <Routes />
+      </Router>
     </div>
   );
 }
