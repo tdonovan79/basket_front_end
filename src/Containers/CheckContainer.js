@@ -8,18 +8,15 @@ export default function CheckContainer() {
     const checks = useSelector(state => state.checks)
     const currentEmployee = useSelector(state => state.employee)
     const currentCheck = useSelector(state => state.currentCheck)
-    // console.log('check 0', checks[0])
-    // console.log('currentCheck', currentCheck)
     useEffect(() => {
         if (currentCheck.id === -1 && checks.length > 0) {
-            // console.log('spoop', checks[0])
             dispatch({
                 type: 'SET_CURRENT_CHECK',
                 payload: checks[0]
             })
         }
     }
-        , [checks])
+        , [checks, currentCheck.id, dispatch])
 
     useEffect(() => {
         fetch('http://localhost:3000/get_checks', {
@@ -39,23 +36,23 @@ export default function CheckContainer() {
                 dispatch(action);
             })
     }, [currentEmployee]);
-
+    //set the current check
     const changeCurrentCheck = (newCheck) => {
-        dispatch(dispatch({
+        dispatch({
             type: 'SET_CURRENT_CHECK',
             payload: newCheck
-        }))
+        })
     }
     return (
         <div>
             {currentCheck.id ===  -1?
-                <div></div>
+                <div key={null}></div>
                 :
                 <CurrentCheck key={currentCheck.id} check={currentCheck} />
             }
             {checks.length > 0 ?
                 checks.map(oneCheck => {
-                    if (oneCheck.id != currentCheck.id) {
+                    if (oneCheck.id !== currentCheck.id) {
                         return <Check key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck}/>
                     }
                 })

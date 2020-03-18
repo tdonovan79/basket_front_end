@@ -4,7 +4,7 @@ import NavBar from './Components/NavBar.js'
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Pages/Routes.js'
 import CheckContainer from './Containers/CheckContainer';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       type: 'SET_EMPLOYEE',
       payload: JSON.parse(localStorage.employee)
     });
-  }, [localStorage]
+  }, [dispatch]
   )
   return (
     <div>

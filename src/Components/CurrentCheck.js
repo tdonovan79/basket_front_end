@@ -2,19 +2,21 @@ import React from 'react'
 
 export default function CurrentCheck(props) {
     const check = props.check
-    let sum = 0
+    let checkTotal = 0
+    console.log(check)
     return (
         <div>
-            {console.log('currentCheck', check)}
             {check.id}
+            <ul>
             {check.products.map(product => {
-                sum += product.price
-                return <div>
-                    <h5>{product.name}</h5>
-                    <h6>{product.price}</h6>
-                </div>
+                checkTotal += product.price
+                return <li key={product.id}>
+                    <h5 key={product.name}>{product.name}</h5>
+                    <h6 key={product.price}>{product.price}</h6>
+                </li>
             })}
-            <h3>Total: {sum}</h3>
+            </ul>
+            <h3>Total: {checkTotal}</h3>
         </div>
     )
 }
