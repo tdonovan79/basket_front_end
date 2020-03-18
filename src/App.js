@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import NavBar from './Components/NavBar.js'
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Pages/Routes.js'
+import CheckContainer from './Containers/CheckContainer';
+import { useSelector, useDispatch } from 'react-redux'
 
 
 function App() {
 
-
-
+  const dispatch = useDispatch()
+  useEffect(() => {
+    if(localStorage.length > 0)
+    dispatch({
+      type: 'SET_EMPLOYEE',
+      payload: JSON.parse(localStorage.employee)
+    });
+  }, [localStorage]
+  )
   return (
     <div>
-      {/* <LoginForm />
-      <Payment /> */}
       <Router>
         <NavBar />
         <Routes />
+        <CheckContainer />
       </Router>
     </div>
   );
