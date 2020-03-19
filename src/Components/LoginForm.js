@@ -19,16 +19,17 @@ function LoginForm() {
         fetch('http://localhost:3000/' + endpoint, config)
             .then(r => r.json())
             .then(data => {
-                console.log('data', data)
-                localStorage.token = data.token;
-                // localStorage.login = data.employee.login;
-                // localStorage.name = data.employee.name
-                localStorage.employee = JSON.stringify(data.employee)
-                console.log('local storage', localStorage)
-                dispatch({
-                    type: 'SET_EMPLOYEE',
-                    payload: data.employee
-                });
+                if (data.employee) {
+                    localStorage.token = data.token;
+                    localStorage.employee = JSON.stringify(data.employee)
+                    dispatch({
+                        type: 'SET_EMPLOYEE',
+                        payload: data.employee
+                    });
+                }
+                else {
+                    alert(data.error)
+                }
             })
     }
 
@@ -36,10 +37,20 @@ function LoginForm() {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
 
+    function changeFormButton() {
+        return login ? (
+            <button onClick={() => setLogin(false)}>Set new employee</button>
+        ) : (
+                <button onClick={() => setLogin(true)}>
+                    Employee log in
+            </button>
+            );
+    }
+
     return (
         <div>
             <div className="form-page">
-                <h1>Welcome {employee.name}</h1>
+                <h1>{login ? 'Log In' : 'New Employee'}</h1>
                 <form onSubmit={handleSubmit}>
                     Login:
                     <input
@@ -57,9 +68,22 @@ function LoginForm() {
                         onChange={handleChange}
                         placeholder="Password"
                     />
+                    {
+                        !login &&
+                        <div>
+                            Name:
+                            <input
+                                type="text"
+                                name="name"
+                                value={form.name}
+                                onChange={handleChange}
+                                placeholder="Name"
+                            />
+                        </div>
+                    }
                     <input type="submit" />
                 </form>
-                {/* {changeFormButton()} */}
+                {changeFormButton()}
             </div>
         </div>
     )

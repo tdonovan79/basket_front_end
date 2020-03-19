@@ -3,21 +3,34 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export default function CurrentCheck(props) {
     const check = props.check
+    const dispatch = useDispatch()
     //delete item from check
-    const deleteProduct = productId => {
-        fetch('http://localhost:3000/payments', {
+    const deleteProduct = product => {
+        fetch('http://localhost:3000/delete_from_check', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(params)
+            body: JSON.stringify({
+                check_id: check.id,
+                product_id: product.id
+            })
         })
             .then(r => r.json())
-            .then(() => {
+            .then(data => {
+                    console.log()
+                    dispatch({
+                        type: 'DELETE_PRODUCT',
+                        payload: {selCheck: check, delProduct: product}
+                    })
+                    dispatch({
+                        type: 'DELETE_PRODUCT_FROM_CURRENT_CHECK',
+                        payload: product
+                    })
 
-            }
-    }
+            })
+        }
     //starting for check total
     let checkTotal = 0
     return (
@@ -29,7 +42,7 @@ export default function CurrentCheck(props) {
                 return <li key={product.id}>
                     <h5 key={product.name}>{product.name}</h5>
                     <h6 key={product.price}>{product.price}</h6>
-                    <button onClick={() => deleteProduct(product.id)}>Delete Product</button>
+                    <button onClick={() => deleteProduct(product)}>Delete Product</button>
                 </li>
             })}
             </ul>

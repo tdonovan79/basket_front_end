@@ -42,11 +42,15 @@ export default function Payment() {
             .then(r => r.json())
             //close current check and move to next if available
             .then(() => {
-                const closeAction = {
+                const closeAction = 
+                dispatch({
                     type: 'SET_STATUS_CURRENT_CHECK',
                     payload: false
-                }
-                dispatch(closeAction)
+                })
+                dispatch({
+                    type: 'SET_STATUS',
+                    payload: {setCheck: currentCheck, status: false}
+                })
                 const nextCheckAction = checks.length > 0 ?
                     {
                         type: 'SET_CURRENT_CHECK',

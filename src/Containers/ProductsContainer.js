@@ -48,7 +48,7 @@ export default function ItemContainer() {
                 }
                 dispatch(currentAction)
                 const checkAction = {
-                    type: 'ADD_PRODUCT',
+                    type: 'ADD_PRODUCT_TO_CHECKS',
                     payload: {newCheck: currentCheck, newProduct: newProduct}
                 }
                 dispatch(checkAction)
