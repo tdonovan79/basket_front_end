@@ -6,10 +6,10 @@ export default (state = [], { type, payload }) => {
             return deleteCheck(state, payload);
         case 'ADD_CHECK':
             return addCheck(state, payload);
-        case 'DELETE_ITEM':
-            return deleteItem(state, payload);
-        case 'ADD_ITEM':
-            return addItem(state, payload);
+        // case 'DELETE_PRODUCT':
+        //     return deleteProduct(state, payload);
+        case 'ADD_PRODUCT':
+            return addProduct(state, payload);
         default:
             return state;
     }
@@ -21,20 +21,21 @@ function deleteCheck(arrOfChecks, oneCheck) {
 function addCheck(arrOfChecks, oneCheck) {
     return [...arrOfChecks, oneCheck];
 }
-function deleteItem(arrOfChecks, { oneCheck, oneItem }) {
+function deleteProduct(arrOfChecks, { oneCheck, oneProduct }) {
     let newCheckArray = [...arrOfChecks]
     newCheckArray.map(check => {
         if (check.id === oneCheck) {
-            check.items.filter(item => item.id !== oneItem.id);
+            return check.products.filter(product => product.id !== oneProduct.id);
         }
     })
     return newCheckArray
 }
-function addItem(arrOfChecks, { oneCheck, oneItem }) {
-    let newCheckArray = [...arrOfChecks]
+function addProduct(arrOfChecks, payload) {
+    let newCheckArray = arrOfChecks.slice()
     newCheckArray.map(check => {
-        if (check.id === oneCheck) {
-            check.items.filter(item => item.id !== oneItem.id);
+        console.log('inside map', check, payload.newCheck, check.id === payload.newCheck.id)
+        if (check.id === payload.newCheck.id) {
+            return check.products.push(payload.newProduct)
         }
     })
     return newCheckArray

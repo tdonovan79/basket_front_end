@@ -8,16 +8,17 @@ export default function CheckContainer() {
     const checks = useSelector(state => state.checks)
     const currentEmployee = useSelector(state => state.employee)
     const currentCheck = useSelector(state => state.currentCheck)
+    //set initial current check
     useEffect(() => {
         if (currentCheck.id === -1 && checks.length > 0) {
             dispatch({
                 type: 'SET_CURRENT_CHECK',
-                payload: checks[0]
+                payload: checks.find(check => check.open)
             })
         }
     }
-        , [checks, currentCheck.id, dispatch])
-
+        , [checks, dispatch])
+    //get checks on mount
     useEffect(() => {
         fetch('http://localhost:3000/get_checks', {
             method: 'POST',
@@ -45,14 +46,15 @@ export default function CheckContainer() {
     }
     return (
         <div>
+            
             {currentCheck.id ===  -1?
-                <div key={null}></div>
+                <div key={-1}>No Open Checks</div>
                 :
                 <CurrentCheck key={currentCheck.id} check={currentCheck} />
             }
             {checks.length > 0 ?
                 checks.map(oneCheck => {
-                    if (oneCheck.id !== currentCheck.id) {
+                    if (oneCheck.id !== currentCheck.id && oneCheck.open) {
                         return <Check key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck}/>
                     }
                 })

@@ -57,14 +57,6 @@ function LoginForm() {
                         onChange={handleChange}
                         placeholder="Password"
                     />
-                    Name:
-                    <input
-                        type="name"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Name"
-                    />
                     <input type="submit" />
                 </form>
                 {/* {changeFormButton()} */}
