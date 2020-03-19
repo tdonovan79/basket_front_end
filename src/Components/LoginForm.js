@@ -26,6 +26,10 @@ function LoginForm() {
                         type: 'SET_EMPLOYEE',
                         payload: data.employee
                     });
+                    dispatch({
+                        type: 'SET_CURRENT_CHECK',
+                        payload: { id: -1 }
+                    })
                 }
                 else {
                     alert(data.error)

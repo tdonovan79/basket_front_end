@@ -8,7 +8,6 @@ export default function CheckContainer() {
     const checks = useSelector(state => state.checks)
     const currentEmployee = useSelector(state => state.employee)
     const currentCheck = useSelector(state => state.currentCheck)
-    console.log('hello', checks)
     //set initial current check
     useEffect(() => {
         if (currentCheck.id === -1 && checks.length > 0) {
