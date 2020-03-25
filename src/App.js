@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import NavBar from './Components/NavBar.js'
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Pages/Routes.js'
 import CheckContainer from './Containers/CheckContainer';
@@ -19,11 +18,10 @@ function App() {
   }, [dispatch]
   )
   return (
-    <div>
+    <div id="app">
       <Router>
-        <NavBar />
-        <Routes />
         <CheckContainer />
+        <Routes />
       </Router>
     </div>
   );

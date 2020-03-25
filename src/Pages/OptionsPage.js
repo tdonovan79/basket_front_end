@@ -34,8 +34,8 @@ export default function OptionsPage() {
             })
     }
     return (
-        <div>
-            <button onClick={newCheck}>New Check</button>
+        <div class ="pusher">
+            <button class="ui button" onClick={newCheck}>New Check</button>
             <LoginForm />
             <ProductForm/>
         </div>

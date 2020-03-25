@@ -43,9 +43,9 @@ function LoginForm() {
 
     function changeFormButton() {
         return login ? (
-            <button onClick={() => setLogin(false)}>Set new employee</button>
+            <button class="ui button" onClick={() => setLogin(false)}>Set new employee</button>
         ) : (
-                <button onClick={() => setLogin(true)}>
+                <button class = "ui button" onClick={() => setLogin(true)}>
                     Employee log in
             </button>
             );
@@ -85,7 +85,7 @@ function LoginForm() {
                             />
                         </div>
                     }
-                    <input type="submit" />
+                    <input class="ui button" type="submit" />
                 </form>
                 {changeFormButton()}
             </div>

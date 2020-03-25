@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  list-style-type: none;
+}
+
+/* app container for 3 major elements */
+#app {
+  display: inline-grid;
+}
+/* main window */
+.main-window {
+  
+}
+/* nav buttons  */
+#nav-bar {
+  color: #00cc00;
+}

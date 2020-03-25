@@ -3,6 +3,6 @@ import ProductsContainer from '../Containers/ProductsContainer.js'
 
 export default function HomePage() {
     return (
-        <ProductsContainer/>
+        <ProductsContainer class ="pusher"/>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Check from '../Components/Check.js'
+import CheckButton from '../Components/CheckButton.js'
 import CurrentCheck from '../Components/CurrentCheck.js'
 
 export default function CheckContainer() {
@@ -45,17 +45,16 @@ export default function CheckContainer() {
         })
     }
     return (
-        <div>
-            <h1>Checks</h1>
+        <div class="ui visible left sidebar">
             {currentCheck.id ===  -1?
                 <div key={-1}>No Open Checks</div>
                 :
-                <CurrentCheck key={currentCheck.id} check={currentCheck} />
+                <CurrentCheck key={currentCheck.id} check={currentCheck} class="item" />
             }
             {checks.length > 0 ?
                 checks.map(oneCheck => {
                     if (oneCheck.id !== currentCheck.id && oneCheck.open) {
-                        return <Check key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck}/>
+                        return <CheckButton key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck} class="item" />
                     }
                 })
                 :

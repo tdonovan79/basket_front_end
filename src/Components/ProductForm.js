@@ -56,7 +56,7 @@ export default function ProductForm() {
                         onChange={handleChange}
                         placeholder="8875"
                     />
-                    <input type="submit" />
+                    <input class="ui button" type="submit" />
                 </form>
         </div>
     )

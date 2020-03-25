@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 export default function CurrentCheck(props) {
     const check = props.check
@@ -42,7 +42,7 @@ export default function CurrentCheck(props) {
                 return <li key={product.id}>
                     <h5 key={product.name}>{product.name}</h5>
                     <h6 key={product.price}>{product.price}</h6>
-                    <button onClick={() => deleteProduct(product)}>Delete Product</button>
+                    <button class = "ui button" onClick={() => deleteProduct(product)}>Delete Product</button>
                 </li>
             })}
             </ul>

@@ -43,7 +43,7 @@ function addProduct(arrOfChecks, payload) {
     })
     return newCheckArray
 }
-//closes check
+//close/opens check
 function setStatus(arrOfChecks, payload) {
     let newCheckArray = arrOfChecks.slice()
     newCheckArray.map(check => {
