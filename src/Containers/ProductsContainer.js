@@ -12,7 +12,7 @@ export default function ItemContainer() {
     const products = useSelector(state => state.products)
     //fetch products from backend on render
     useEffect(() => {
-        fetch('http://localhost:3000/products')
+        fetch('https://basketapp-api.herokuapp.com//products')
             .then(r => r.json())
             .then(products => {
                 // console.log(products)
@@ -29,7 +29,7 @@ export default function ItemContainer() {
     //Add product to products in current check, front end and back end
     const addProductToCurrentCheck = (newProduct) => {
         console.log(newProduct.id)
-        fetch('http://localhost:3000/sales', {
+        fetch('https://basketapp-api.herokuapp.com//sales', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

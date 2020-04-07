@@ -20,7 +20,7 @@ export default function CheckContainer() {
         , [checks, dispatch])
     //get checks on mount
     useEffect(() => {
-        fetch('http://localhost:3000/get_checks', {
+        fetch('https://basketapp-api.herokuapp.com//get_checks', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

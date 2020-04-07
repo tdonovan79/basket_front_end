@@ -6,7 +6,7 @@ export default function CurrentCheck(props) {
     const dispatch = useDispatch()
     //delete item from check
     const deleteProduct = product => {
-        fetch('http://localhost:3000/delete_from_check', {
+        fetch('https://basketapp-api.herokuapp.com//delete_from_check', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -17,7 +17,7 @@ export default function ProductForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
         };
-        fetch('http://localhost:3000/products', config)
+        fetch('https://basketapp-api.herokuapp.com//products', config)
             .then(r => r.json())
             .then(data => {
                 console.log('data', data)

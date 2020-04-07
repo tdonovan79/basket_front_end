@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 // => URLs
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://basketapp-api.herokuapp.com/'
 const CHARGES_URL = BASE_URL + '/charge_adapter'
 
 // => app component
@@ -31,7 +31,7 @@ export default function Payment() {
             last_four: saleData.payment_method_details.card.last4,
             stripe_id: saleData.id
         }
-        fetch('http://localhost:3000/payments', {
+        fetch('https://basketapp-api.herokuapp.com/', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

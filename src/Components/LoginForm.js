@@ -16,7 +16,7 @@ function LoginForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
         };
-        fetch('http://localhost:3000/' + endpoint, config)
+        fetch('https://basketapp-api.herokuapp.com//' + endpoint, config)
             .then(r => r.json())
             .then(data => {
                 if (data.employee) {
