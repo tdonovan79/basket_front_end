@@ -19,7 +19,7 @@ function App() {
   )
   return (
     <div id="app">
-      <Router>
+      <Router basename="/course-directory">
         <CheckContainer />
         <Routes />
       </Router>
