@@ -13,7 +13,7 @@ export default function OptionsPage() {
 
     //create new check and make that current check
     const newCheck = () => {
-        fetch('http://localhost:3000/checks', {
+        fetch('https://basketapp-api.herokuapp.com/checks', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
