@@ -36,7 +36,7 @@ export default function ClosedCheck(props) {
     return (
         <div>
             {check.id}
-            <button class="ui button" onClick={() => toggleShow()}>Show Check</button>
+            <button onClick={() => toggleShow()}>Show Check</button>
             {
                 show ?
                     <div>

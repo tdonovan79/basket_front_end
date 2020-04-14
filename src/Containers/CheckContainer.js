@@ -8,6 +8,29 @@ export default function CheckContainer() {
     const checks = useSelector(state => state.checks)
     const currentEmployee = useSelector(state => state.employee)
     const currentCheck = useSelector(state => state.currentCheck)
+
+    //create new check and make that current check
+    const newCheck = () => {
+        fetch('https://basketapp-api.herokuapp.com/checks', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ employee: currentEmployee })
+        })
+            .then(r => r.json())
+            .then(newCheck => { 
+                dispatch({
+                    type: 'ADD_CHECK',
+                    payload: newCheck
+                })
+                dispatch({
+                    type: 'SET_CURRENT_CHECK',
+                    payload: checks[checks.length-1]
+                })
+            })
+    }
     //set initial current check
     useEffect(() => {
         if (currentCheck.id === -1 && checks.length > 0) {
@@ -45,20 +68,25 @@ export default function CheckContainer() {
         })
     }
     return (
-        <div class="ui visible left sidebar">
-            {currentCheck.id ===  -1?
+        <div className="sidebar">
+            {currentCheck.id === -1 ?
                 <div key={-1}>No Open Checks</div>
                 :
-                <CurrentCheck key={currentCheck.id} check={currentCheck} class="item" />
+                <CurrentCheck key={currentCheck.id} check={currentCheck} className="current-check" />
             }
-            {checks.length > 0 ?
+            <div className="check-button-container">{
+                checks.length > 0 ?
                 checks.map(oneCheck => {
                     if (oneCheck.id !== currentCheck.id && oneCheck.open) {
-                        return <CheckButton key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck} class="item" />
+                        return <div className="check-button">
+                    <CheckButton key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck} class="item" />
+                </div>
                     }
                 })
                 :
-                'no checks'}
+                'no checks'
+                }</div>
+                <button className="button" onClick={newCheck}>New Check</button>
         </div>
     )
 }

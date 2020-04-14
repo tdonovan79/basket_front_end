@@ -89,7 +89,7 @@ export default function Payment() {
     }
 
     return (
-        <div>
+        <div className="page">
             <StripeCheckout
                 token={onToken}
                 stripeKey={'pk_test_hu8PVV0R7B8kvBXe6dcMJzv900zdD0uCqV'}

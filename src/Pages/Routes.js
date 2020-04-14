@@ -8,9 +8,9 @@ import ReportsPage from './ReportsPage.js'
 
 export default function Routes() {
     return (
-        <div class="pusher">
-            <NavBar class="ui visible top sidebar" />
-            <div class="pusher">
+        <div>
+            <NavBar/>
+            <div>
                 <Switch >
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/options" component={OptionsPage} />

@@ -1,38 +1,51 @@
-.App {
+/* elimnate bullet points from lists */
+ul {
+  list-style-type: none;
+}
+/* create grid */
+#app {
+  display: grid;
+  grid-template-columns: 400px auto;
+  grid-template-rows: 100px auto;
+  grid-template-areas: 
+    "sidebar nav-bar"
+    "sidebar options"
+  ;
+  row-gap: 15px;
+}
+/* checks sidebar */
+.sidebar {
+  grid-area: sidebar;
   text-align: center;
+  display: grid;
+  grid-template-rows: 8fr 1fr 0.5fr;
+  grid-template-areas: 
+    "current-check"
+    "check-buttons"
+    "new-check"
+  ;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.current-check-container {
+  grid-area: current-check;
+  /* overflow: scroll; */
+  height: 600px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.check-items {
+  grid-area: current-check;
+  overflow: scroll;
+  height: 500px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.check-button-container {
+  grid-area: check-buttons;
+  overflow: scroll;
+  height: 70px;
 }
-
-.App-link {
-  color: #61dafb;
+/* nav bar */
+.nav-bar {
+  grid-area: nav-bar;
+  padding-bottom: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* main pages */
+.page {
+  grid-area: options;
 }

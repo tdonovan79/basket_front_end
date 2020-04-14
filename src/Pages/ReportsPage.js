@@ -10,7 +10,7 @@ export default function ReportsPage() {
 
 
     return (
-        <div>
+        <div className="page">
             <h1>Closed Checks</h1>
             {checks.length > 0 ?
                 checks.map(oneCheck => {

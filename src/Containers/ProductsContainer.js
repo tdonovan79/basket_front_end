@@ -56,7 +56,7 @@ export default function ItemContainer() {
     }
 
     return (
-        <div>
+        <div className="page">
             {products.map(product => {
                 return <Product product={product} key={product.id} addProductToCurrentCheck={addProductToCurrentCheck} />
             })}

@@ -34,15 +34,15 @@ export default function CurrentCheck(props) {
     //starting for check total
     let checkTotal = 0
     return (
-        <div>
-            {check.id}
-            <ul>
+        <div className="current-check-container">
+            <h2 className="current-check-id">{check.id}</h2>
+            <ul className="check-items">
             {check.products.map(product => {
                 checkTotal += product.price
                 return <li key={product.id}>
                     <h5 key={product.name}>{product.name}</h5>
                     <h6 key={product.price}>{product.price}</h6>
-                    <button class = "ui button" onClick={() => deleteProduct(product)}>Delete Product</button>
+                    <button onClick={() => deleteProduct(product)}>Delete Product</button>
                 </li>
             })}
             </ul>

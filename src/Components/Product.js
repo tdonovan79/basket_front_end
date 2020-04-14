@@ -8,7 +8,6 @@ export default function Product(props) {
             <button
                 key={product.id}
                 onClick={() => props.addProductToCurrentCheck(product)}
-                class = "ui button"
             >{product.name}</button>
         </div>
     )
