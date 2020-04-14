@@ -40,6 +40,9 @@ ul {
   overflow: scroll;
   height: 70px;
 }
+.check-button {
+  cursor: pointer;
+}
 /* nav bar */
 .nav-bar {
   grid-area: nav-bar;
