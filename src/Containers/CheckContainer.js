@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CheckButton from '../Components/CheckButton.js'
 import CurrentCheck from '../Components/CurrentCheck.js'
+import {BASE_URL} from '../constants.js'
 
 export default function CheckContainer() {
     const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export default function CheckContainer() {
 
     //create new check and make that current check
     const newCheck = () => {
-        fetch('https://basketapp-api.herokuapp.com/checks', {
+        fetch(BASE_URL + '/checks', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

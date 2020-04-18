@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 
 
 function App() {
-
+  //if emlployee is logged in in localStorage, set the employee
   const dispatch = useDispatch()
   useEffect(() => {
     if(localStorage.length > 0)

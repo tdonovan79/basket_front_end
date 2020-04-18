@@ -1,12 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import {BASE_URL} from '../constants.js'
 
 export default function CurrentCheck(props) {
     const check = props.check
     const dispatch = useDispatch()
     //delete item from check
     const deleteProduct = product => {
-        fetch('https://basketapp-api.herokuapp.com//delete_from_check', {
+        fetch(BASE_URL + '/delete_from_check', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

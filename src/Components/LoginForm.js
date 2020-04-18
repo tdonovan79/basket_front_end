@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import {BASE_URL} from '../constants.js'
 
 function LoginForm() {
     const employee = useSelector(state => state.employee);
@@ -16,7 +17,7 @@ function LoginForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
         };
-        fetch('https://basketapp-api.herokuapp.com//' + endpoint, config)
+        fetch(BASE_URL + endpoint, config)
             .then(r => r.json())
             .then(data => {
                 if (data.employee) {

@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
+import {BASE_URL} from '../constants.js'
 
 export default function ProductForm() {
     const [form, setForm] = useState({ name: '', price: '', tax: '' });
@@ -17,7 +18,7 @@ export default function ProductForm() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(form)
         };
-        fetch('https://basketapp-api.herokuapp.com//products', config)
+        fetch(BASE_URL + '/products', config)
             .then(r => r.json())
             .then(data => {
                 console.log('data', data)

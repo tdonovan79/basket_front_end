@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import {BASE_URL} from '../constants.js'
 
 export default function ClosedCheck(props) {
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ export default function ClosedCheck(props) {
         const params = {
             check_id: check.id
         }
-        fetch('https://basketapp-api.herokuapp.com/reopen_check', {
+        fetch(BASE_URL + '/reopen_check', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

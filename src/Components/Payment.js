@@ -1,10 +1,10 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import { useSelector, useDispatch } from 'react-redux'
+import {BASE_URL} from '../constants.js'
 
 
 // => URLs
-const BASE_URL = 'https://basketapp-api.herokuapp.com/'
 const CHARGES_URL = BASE_URL + '/charge_adapter'
 
 // => app component
@@ -31,7 +31,7 @@ export default function Payment() {
             last_four: saleData.payment_method_details.card.last4,
             stripe_id: saleData.id
         }
-        fetch('https://basketapp-api.herokuapp.com/', {
+        fetch(BASE_URL, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

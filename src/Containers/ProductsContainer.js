@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Product from '../Components/Product.js'
+import {BASE_URL} from '../constants.js'
 
 export default function ItemContainer() {
 
@@ -12,7 +13,7 @@ export default function ItemContainer() {
     const products = useSelector(state => state.products)
     //fetch products from backend on render
     useEffect(() => {
-        fetch('https://basketapp-api.herokuapp.com//products')
+        fetch(BASE_URL + '/products')
             .then(r => r.json())
             .then(products => {
                 // console.log(products)
@@ -29,7 +30,7 @@ export default function ItemContainer() {
     //Add product to products in current check, front end and back end
     const addProductToCurrentCheck = (newProduct) => {
         console.log(newProduct.id)
-        fetch('https://basketapp-api.herokuapp.com//sales', {
+        fetch(BASE_URL + '/sales', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
