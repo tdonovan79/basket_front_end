@@ -15,7 +15,7 @@ export default function ClosedCheck(props) {
         const params = {
             check_id: check.id
         }
-        fetch('https://basketapp-api.herokuapp.com//reopen_check', {
+        fetch('https://basketapp-api.herokuapp.com/reopen_check', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
