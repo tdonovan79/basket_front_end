@@ -1,9 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {BASE_URL} from '../constants.js'
 
-export default function CurrentCheck(props) {
-    const check = props.check
+export default function CurrentCheck() {
+    // const check = props.check
+    const check = useSelector(state => state.currentCheck)
     const dispatch = useDispatch()
     //delete item from check
     const deleteProduct = product => {
@@ -36,11 +37,12 @@ export default function CurrentCheck(props) {
     let checkTotal = 0
     return (
         <div className="current-check-container">
-            <h2 className="current-check-id">{check.id}</h2>
+            <h2 className="current-check-id">{check.id === -1 ? "" : check.id}</h2>
+            {console.log(check)}
             <ul className="check-items">
             {check.products.map(product => {
                 checkTotal += product.price
-                return <li key={product.id}>
+                return <li key={product.id} className="check-item">
                     <h5 key={product.name}>{product.name}</h5>
                     <h6 key={product.price}>{product.price}</h6>
                     <button onClick={() => deleteProduct(product)}>Delete Product</button>

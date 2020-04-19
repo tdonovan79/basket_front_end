@@ -28,7 +28,7 @@ export default function CheckContainer() {
                 })
                 dispatch({
                     type: 'SET_CURRENT_CHECK',
-                    payload: checks[checks.length-1]
+                    payload: (checks.length > 1 ? checks[checks.length-1] : checks[0])
                 })
             })
     }
@@ -67,19 +67,20 @@ export default function CheckContainer() {
             type: 'SET_CURRENT_CHECK',
             payload: newCheck
         })
+        console.log(newCheck)
     }
     return (
         <div className="sidebar">
             {currentCheck.id === -1 ?
                 <div key={-1}>No Open Checks</div>
                 :
-                <CurrentCheck key={currentCheck.id} check={currentCheck} className="current-check" />
+                <CurrentCheck key={currentCheck.id} className="current-check" />
             }
             <div className="check-button-container">{
                 checks.length > 0 ?
                 checks.map(oneCheck => {
                     if (oneCheck.id !== currentCheck.id && oneCheck.open) {
-                        return <div className="check-button">
+                        return <div className="check-button" key = {oneCheck.id}>
                     <CheckButton key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck} class="item" />
                 </div>
                     }

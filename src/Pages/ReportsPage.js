@@ -23,7 +23,7 @@ export default function ReportsPage() {
                     }
                 })
                 :
-                'no checks'}
+                <></>}
         </div>
     )
 }

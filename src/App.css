@@ -5,7 +5,7 @@ ul {
 /* create grid */
 #app {
   display: grid;
-  grid-template-columns: 400px auto;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 100px auto;
   grid-template-areas: 
     "sidebar nav-bar"
@@ -18,37 +18,53 @@ ul {
   grid-area: sidebar;
   text-align: center;
   display: grid;
-  grid-template-rows: 8fr 1fr 0.5fr;
+  grid-template-rows: 8fr 0.5fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: 
-    "current-check"
-    "check-buttons"
-    "new-check"
+    "current-check check-buttons"
+    "new-check check-buttons"
   ;
 }
 .current-check-container {
   grid-area: current-check;
-  /* overflow: scroll; */
-  height: 600px;
+  overflow: scroll;
+  height: 100%;
 }
 .check-items {
   grid-area: current-check;
   overflow: scroll;
   height: 500px;
 }
+.check-item {
+  transition: 0.8s;
+}
+.check-item:hover {
+  background-color: #DCDCDC;
+}
 .check-button-container {
   grid-area: check-buttons;
   overflow: scroll;
-  height: 70px;
 }
 .check-button {
   cursor: pointer;
+  margin-top: 5px;
+  border-style: solid;
+  border-width: thin;
+  font-size: 18px;
+  transition: 0.8s;
+}
+.check-button:hover{
+  background-color: #DCDCDC;
 }
 /* nav bar */
 .nav-bar {
   grid-area: nav-bar;
-  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
+
 /* main pages */
 .page {
   grid-area: options;
+  margin-left: 10px;
 }

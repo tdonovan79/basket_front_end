@@ -8,7 +8,7 @@ import ReportsPage from './ReportsPage.js'
 
 export default function Routes() {
     return (
-        <div>
+        <div className="nav-page">
             <NavBar/>
             <div>
                 <Switch >

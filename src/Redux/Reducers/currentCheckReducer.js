@@ -12,6 +12,7 @@ export default (state = { id: -1 }, { type, payload }) => {
             return state;
     }
 };
+
 //add new product to check
 function addProduct(currentCheck, newProduct) {
     return {

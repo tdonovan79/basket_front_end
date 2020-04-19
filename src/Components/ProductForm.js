@@ -49,14 +49,6 @@ export default function ProductForm() {
                         onChange={handleChange}
                         placeholder="Price"
                     />
-                    Tax:
-                    <input
-                        type="text"
-                        name="tax"
-                        value={form.tax}
-                        onChange={handleChange}
-                        placeholder="8875"
-                    />
                     <input type="submit" />
                 </form>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import {useDispatch } from 'react-redux'
+import {useDispatch} from 'react-redux'
 import {BASE_URL} from '../constants.js'
+
 
 function LoginForm() {
     const [login, setLogin] = useState(true);
@@ -51,11 +52,15 @@ function LoginForm() {
             </button>
             );
     }
-    //clear current employee and clear local storage
-    function handleLogout() {
+    //clear current employee, current check and clear local storage
+    const handleLogout = () => {
         dispatch({
             type: 'CLEAR_EMPLOYEE'
-        });
+        })
+        dispatch({
+            type: 'SET_CURRENT_CHECK',
+            payload: {id: -1}
+        })
         localStorage.clear()
     }
 

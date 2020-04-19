@@ -32,7 +32,7 @@ export default function Payment() {
             last_four: saleData.payment_method_details.card.last4,
             stripe_id: saleData.id
         }
-        fetch(BASE_URL, {
+        fetch(BASE_URL + "/sales", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
