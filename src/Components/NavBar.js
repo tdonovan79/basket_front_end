@@ -7,8 +7,8 @@ export default function Nav() {
     const currentEmployee = useSelector(state => state.employee)
     return (
         <div className= "nav-bar">
-            <p class="item">Logged in: {currentEmployee.name}</p>
-            <nav i>
+            <p className="item">Logged in: {currentEmployee.name}</p>
+            <nav>
                 <Link  to="/"><button>Products</button></Link>
                 <Link to="/options"><button>Options</button></Link>
                 <Link to="/payment"><button>Payment</button></Link>

@@ -41,10 +41,10 @@ export default function CheckContainer() {
             })
         }
     }
-        , [checks, dispatch])
+        , [checks, dispatch, currentCheck.id])
     //get checks on mount
     useEffect(() => {
-        fetch('https://basketapp-api.herokuapp.com//get_checks', {
+        fetch(BASE_URL + '/get_checks', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -60,7 +60,7 @@ export default function CheckContainer() {
                 };
                 dispatch(action);
             })
-    }, [currentEmployee]);
+    }, [currentEmployee, dispatch]);
     //set the current check
     const changeCurrentCheck = (newCheck) => {
         dispatch({
@@ -82,6 +82,9 @@ export default function CheckContainer() {
                         return <div className="check-button">
                     <CheckButton key={oneCheck.id} check={oneCheck} changeCurrentCheck={changeCurrentCheck} class="item" />
                 </div>
+                    }
+                    else {
+                        return <></>
                     }
                 })
                 :

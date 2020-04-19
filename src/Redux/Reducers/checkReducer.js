@@ -31,6 +31,9 @@ function deleteProduct(arrOfChecks, payload) {
             const index = check.products.findIndex(product => product.id === payload.delProduct.id)
             return check.products.splice(index, 1)
         }
+        else {
+            return []
+        }
     })
     return newCheckArray
 }
@@ -39,6 +42,9 @@ function addProduct(arrOfChecks, payload) {
     newCheckArray.map(check => {
         if (check.id === payload.newCheck.id) {
             return check.products.push(payload.newProduct)
+        }
+        else {
+            return []
         }
     })
     return newCheckArray
@@ -49,6 +55,9 @@ function setStatus(arrOfChecks, payload) {
     newCheckArray.map(check => {
         if (check.id === payload.setCheck.id) {
             return check.open = payload.status
+        }
+        else {
+            return check.open
         }
     })
     return newCheckArray

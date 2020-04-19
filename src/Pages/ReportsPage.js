@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector} from 'react-redux'
 import ClosedCheck from '../Components/ClosedCheck.js'
 
 export default function ReportsPage() {
     const checks = useSelector(state => state.checks)
-    const currentEmployee = useSelector(state => state.employee)
 
     
 
@@ -18,6 +17,9 @@ export default function ReportsPage() {
                         return <div>
                             <ClosedCheck key={oneCheck.id} check={oneCheck} />
                         </div>
+                    }
+                    else {
+                        return <></>
                     }
                 })
                 :

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux'
 import {BASE_URL} from '../constants.js'
 
 function LoginForm() {
-    const employee = useSelector(state => state.employee);
     const [login, setLogin] = useState(true);
     const [form, setForm] = useState({ login: '', password: '', name: '' });
 
     const dispatch = useDispatch()
 
+    //create or login/auth
     function handleSubmit(e) {
         e.preventDefault();
         const endpoint = login ? '/login' : '/employees';
@@ -37,7 +37,7 @@ function LoginForm() {
                 }
             })
     }
-
+    //controlled form
     function handleChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
@@ -51,10 +51,18 @@ function LoginForm() {
             </button>
             );
     }
+    //clear current employee and clear local storage
+    function handleLogout() {
+        dispatch({
+            type: 'CLEAR_EMPLOYEE'
+        });
+        localStorage.clear()
+    }
 
     return (
         <div>
             <div className="form-page">
+                {/* if login true render login */}
                 <h1>{login ? 'Log In' : 'New Employee'}</h1>
                 <form onSubmit={handleSubmit}>
                     Login:
@@ -74,6 +82,7 @@ function LoginForm() {
                         placeholder="Password"
                     />
                     {
+                        // only render when creating employee
                         !login &&
                         <div>
                             Name:
@@ -90,6 +99,8 @@ function LoginForm() {
                 </form>
                 {changeFormButton()}
             </div>
+            {/* logout button */}
+            <button onClick={handleLogout}>Logout</button>
         </div>
     )
 }

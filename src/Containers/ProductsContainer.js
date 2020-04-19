@@ -24,8 +24,8 @@ export default function ItemContainer() {
                 dispatch(action);
             })
     }
-
-        , [])
+    
+        , [dispatch])
 
     //Add product to products in current check, front end and back end
     const addProductToCurrentCheck = (newProduct) => {

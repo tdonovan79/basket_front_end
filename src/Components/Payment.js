@@ -22,6 +22,7 @@ export default function Payment() {
     //set price
     const price = currentCheck.id === -1 ? 0 : getPrice(currentCheck.products)
 
+
     //record sale in ront and back end
     const recordSale = (saleData) => {
         const params = {
@@ -41,8 +42,7 @@ export default function Payment() {
         })
             .then(r => r.json())
             //close current check and move to next if available
-            .then(() => {
-                const closeAction = 
+            .then(() => { 
                 dispatch({
                     type: 'SET_STATUS_CURRENT_CHECK',
                     payload: false
