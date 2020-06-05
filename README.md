@@ -1,6 +1,6 @@
 # Basket
 
-Basket is a web-based POS system built using React App, withimpletmentatin of Hooks and Redux. Using Basket allows users to build checks out fo items and close them with payment, for use in a reatil or food service environment.
+Basket is a web-based POS system built using React App, with implementation of Hooks and Redux. Using Basket allows users to build checks out fo items and close them with payment, for use in a reatil or food service environment.
 
 [Back End Github](https://github.com/tdonovan79/basket_back_end)<br/>
 [Live App](https://tdonovan79.github.io/basket_front_end/)<br/>
